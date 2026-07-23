@@ -1,0 +1,16 @@
+export const colorsPresets = {
+  mainBorder: "border-orange-400",
+  secundaryBorder: "border-blue-800",
+  mainBg: "bg-orange-400",
+  secundaryBg: "bg-blue-800",
+  mainText: "text-orange-400",
+  secundaryText: "text-blue-800",
+  bg0: "bg-neutral-400/50",
+  bg1: "bg-neutral-200",
+  bg2: "bg-neutral-100",
+  bg3: "bg-cyan-900",
+  textLight: "text-white",
+  textGray: "text-neutral-500",
+  textDark: "text-black",
+  textLink: "text-blue-600",
+};

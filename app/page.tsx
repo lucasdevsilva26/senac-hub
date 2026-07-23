@@ -1,10 +1,12 @@
 import BannerBook from "@/components/BannerBook";
+import LoginButton from "@/components/LoginButton";
+import SignonButton from "@/components/SignonButton";
 
 export default function Home() {
   return (
-    <div className="flex flex-1 items-center justify-center px-20 bg-neutral-100 font-sans text-black">
+    <div className="flex flex-1 items-center justify-center px-20 bg-neutral-100 font-sans text-black select-none">
       <section className="flex flex-col items-center justify-center flex-2 gap-2">
-        <BannerBook/>
+        <BannerBook />
       </section>
 
       <section className="flex flex-col items-center justify-between flex-1 gap-24">
@@ -17,13 +19,8 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col items-center  gap-4 w-full">
-          <button className="w-2/4 py-4 bg-orange-400 rounded-full text-white font-bold text-2xl">
-            Entrar
-          </button>
-
-          <button className="w-2/4 py-4 bg-blue-800 rounded-full text-white font-bold text-2xl">
-            Cadastrar-se
-          </button>
+          <LoginButton />
+          <SignonButton />
         </div>
       </section>
     </div>

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { Dispatch, SetStateAction, useState } from "react";
+import { colorsPresets } from "./LayoutColors";
+import React, { Dispatch, useState } from "react";
 
 type props = {
   numberSelected: number;
@@ -11,20 +12,30 @@ export default function NumberSelector({
   numberSelected,
   setNumberSelected,
 }: props) {
-  const amount = 6;
+  const amount = 7;
 
   const [page, setPage] = useState(0);
 
   const numbersarra = Array.from({ length: amount }, (_, i) => ({ id: i + 1 }));
 
   return (
-    <div className="flex gap-4 h-10 border-b-2 pb-1 border-orange-400">
+    <div
+      className={`flex gap-4 h-10 border-b-2 pb-1 ${colorsPresets.mainBorder}`}
+    >
       <button
-        className=" aspect-square px-3 rounded-full text-blue-800 hover:bg-blue-800 hover:text-white text-xl font-bold cursor-pointer duration-250"
+        className={
+          `aspect-square px-3 rounded-full ${colorsPresets.secundaryText} text-xl font-bold duration-250 ` +
+          (page - 1 >= 0
+            ? `hover:${colorsPresets.secundaryBg} hover:${colorsPresets.textLight} cursor-pointer`
+            : "cursor-not-allowed")
+        }
         onClick={() => {
-          const newPage = Math.max(page - 1, 0);
-          setPage(newPage);
-          setNumberSelected(0 + newPage * 3);
+          if (page - 1 >= 0) {
+            const newPage = Math.max(page - 1, 0);
+
+            setPage(newPage);
+            setNumberSelected(0 + newPage * 3);
+          }
         }}
       >
         Anterior
@@ -37,8 +48,8 @@ export default function NumberSelector({
             className={
               "aspect-square rounded-full text-xl font-bold duration-250 " +
               (num.id - 1 === numberSelected
-                ? "bg-orange-400 text-white"
-                : "text-blue-800 hover:bg-blue-800 hover:text-white cursor-pointer")
+                ? `${colorsPresets.mainBg} ${colorsPresets.textLight}`
+                : `hover:${colorsPresets.secundaryBg} hover:${colorsPresets.textLight} ${colorsPresets.secundaryText} cursor-pointer`)
             }
             onClick={() => setNumberSelected(num.id - 1)}
           >
@@ -48,11 +59,19 @@ export default function NumberSelector({
       })}
 
       <button
-        className="aspect-square px-3 rounded-full text-blue-800 hover:bg-blue-800 hover:text-white text-xl font-bold cursor-pointer duration-250"
+        className={
+          `aspect-square px-3 rounded-full ${colorsPresets.secundaryText} text-xl font-bold duration-250 ` +
+          (page + 1 < amount / 3
+            ? `hover:${colorsPresets.secundaryBg} hover:${colorsPresets.textLight} cursor-pointer`
+            : "cursor-not-allowed")
+        }
         onClick={() => {
-          const newPage = Math.min(Math.round(amount / 3) - 1, page + 1);
-          setPage(newPage);
-          setNumberSelected(0 + newPage * 3);
+          if (page + 1 < amount / 3) {
+            const newPage = Math.min(Math.round(amount / 3), page + 1);
+
+            setPage(newPage);
+            setNumberSelected(0 + newPage * 3);
+          }
         }}
       >
         Próxima

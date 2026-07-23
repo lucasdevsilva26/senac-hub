@@ -1,0 +1,60 @@
+import { colorsPresets } from "@/components/LayoutColors";
+import Link from "next/link";
+
+export default function Home() {
+  return (
+    <div className="flex flex-col flex-1 items-center justify-center px-20 py-10 bg-neutral-100 font-sans text-black select-none">
+      <div className="flex flex-col items-center justify-center mb-10">
+        <h1 className={`font-bold text-5xl ${colorsPresets.textDark}`}>Bem vindo(a)!</h1>
+        <h2 className={`font-bold text-3xl ${colorsPresets.textGray}`}>È um prazer te ver novamente</h2>
+      </div>
+      
+      <form
+        action=""
+        className={`flex flex-col items-center justify-evenly w-120 aspect-3/4 bg-neutral-200 border-4 rounded-2xl ${colorsPresets.mainBorder}`}
+      >
+        <h1 className="text-4xl font-bold">Entrar na conta</h1>
+
+        <section className="flex flex-col gap-6 w-7/9">
+          <div>
+            <label
+              htmlFor=""
+              className={`font-bold text-3xl ${colorsPresets.textGray}`}
+            >
+              E-mail
+            </label>
+
+            <input
+              type="email"
+              className={`flex items-center px-4 w-full h-10 bg-neutral-300 rounded-full border-b-3 text-2xl ${colorsPresets.secundaryBorder}`}
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor=""
+              className={`font-bold text-3xl ${colorsPresets.textGray}`}
+            >
+              Senha
+            </label>
+
+            <input
+              type="password"
+              className={`flex items-center px-4 w-full h-10 bg-neutral-300 rounded-full border-b-3 text-2xl ${colorsPresets.secundaryBorder}`}
+            />
+          </div>
+        </section>
+
+        <div className="flex flex-col items-center gap-2">
+          <button
+            className={`w-11/10 py-2 text-2xl font-bold rounded-full ${colorsPresets.bg0} ${colorsPresets.textGray}`}
+          >
+            Entrar
+          </button>
+
+          <Link href={"signon"} className={`${colorsPresets.textLink} font-bold`}>Não possui uma conta, clique aqui.</Link>
+        </div>
+      </form>
+    </div>
+  );
+}
